@@ -53,8 +53,11 @@
                     <span class="form-error" id="message-error"></span>
                 </div>
                 <button type="submit" class="btn">Contact me</button>
-                <p class="form-success" id="form-success"></p>
             </form>
+
+            <div class="form-sent" id="form-sent">
+                <p class="form-success" id="form-success"></p>
+            </div>
 
             <a href="hello.html" class="back-link" id="back-btn">← Go Back</a>
         </div>
@@ -79,6 +82,8 @@
             };
 
             var contactForm = document.querySelector('#contact-form');
+            var formSent    = document.querySelector('#form-sent');
+            var formSuccess = document.querySelector('#form-success');
 
             moodBtns.forEach(function (btn) {
                 btn.addEventListener('click', function () {
@@ -91,6 +96,14 @@
                     // Show the matching message
                     var mood = btn.getAttribute('data-mood');
                     moodMessage.textContent = messages[mood];
+                    // If coming back after a successful submit, reset the form
+                    if (formSent.classList.contains('visible')) {
+                        formSent.classList.remove('visible');
+                        formSuccess.textContent = '';
+                        document.querySelector('#name').value    = '';
+                        document.querySelector('#email').value   = '';
+                        document.querySelector('#message').value = '';
+                    }
                     // Reveal the form
                     contactForm.classList.add('visible');
                 });
@@ -144,10 +157,10 @@
                     })
                     .then(function (response) {
                         if (response.ok) {
+                            // Hide the form, show success message
+                            contactForm.classList.remove('visible');
                             formSuccess.textContent = 'Thanks! We\'ll be in touch. 🐱';
-                            nameInput.value  = '';
-                            emailInput.value = '';
-                            msgInput.value   = '';
+                            formSent.classList.add('visible');
                         } else {
                             formSuccess.style.color = 'var(--color-error)';
                             formSuccess.textContent = 'Something went wrong. Please try again.';

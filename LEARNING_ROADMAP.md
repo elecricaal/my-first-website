@@ -121,8 +121,26 @@ git commit -m "my first commit"
 ### Step 6 — JavaScript interactivity
 **Goal:** Add real interactivity — animations, form validation, dynamic content.  
 **Concept:** DOM manipulation, event listeners, functions.  
-**Status:** Not started  
-**Suggested starting point:** Add a fade-in animation when the page loads — visual, simple, and teaches core JS concepts (DOM, event listeners, functions) without being overwhelming.  
+**Status:** Completed  
+**What was built:**
+- **Fade-in animation** — `<main>` starts at `opacity: 0`; JS adds `.visible` class on `DOMContentLoaded`, triggering a CSS transition
+- **Button click interaction** — `id="go-btn"` added; `addEventListener('click')` changes button text to "On my way!" then navigates after 600ms using `setTimeout`
+- **Mood selector on second page** — 3 cat emoji buttons (😿 😼 😸); clicking one highlights it, shows a matching message, and reveals the contact form
+- **Contact form with JS validation** — name, email, and free-text message fields; validates with `if/else` logic before sending
+- **Formspree integration** — form data sent via `fetch()` to Formspree; success/error message shown without page reload
+- **Back button** — replaced button style with a `← Go Back` link using `.back-link` CSS class
+**Key concepts learned:**
+- `document.querySelector` / `querySelectorAll` — find one or all matching elements
+- `addEventListener('click', fn)` — run code when an event happens
+- `classList.add / remove` — toggle CSS classes to change appearance
+- `element.textContent` — read or write the text inside an element
+- `setTimeout(fn, ms)` — run something after a delay
+- `data-*` attributes + `getAttribute()` — store and read custom data on HTML elements
+- `forEach` loop — run the same code for each item in a list
+- `e.preventDefault()` — stop a form from reloading the page on submit
+- `fetch()` + `.then()` / `.catch()` — send data to a server and handle the response
+- `new FormData(form)` — package all form field values automatically for sending
+- The DOM — the browser's live in-memory version of your page; JS manipulates it without touching the file on disk
 **Ask Copilot:**
 - *"Explain what the JavaScript on my button does"*
 - *"Add a smooth fade-in animation when the page loads"*
@@ -141,6 +159,13 @@ git commit -m "my first commit"
 - **`git revert` is safer than `git reset`** — revert adds a new commit that undoes changes; reset rewrites history and can cause problems when working with GitHub
 - **Live Server + Auto Save = instant feedback loop** — enable Auto Save (`afterDelay: 500ms`) in VS Code so the browser updates automatically as you type
 - **Test on a real device via local IP** — with Live Server running, open `<your-mac-ip>:5500/hello.html` on your phone (same Wi-Fi required)
+- **The DOM is the browser's live copy of your page** — JS manipulates it in memory; the HTML file on disk never changes until you edit it in VS Code
+- **`id` is for one element, `class` is for many** — use `id` to target a specific element in JS; use `class` for shared styles in CSS
+- **`e.preventDefault()` is essential for JS-controlled forms** — without it the browser reloads the page on submit, wiping all JS state
+- **Static sites can't receive form data on their own** — you need a third-party service like Formspree, or a backend server
+- **`fetch()` is async — the page doesn't freeze** — JS sends the request and continues; `.then()` runs when the response arrives
+- **`name` attributes are required for form submissions** — without them, Formspree (and any server) receives the data unlabelled
+- **Shared components in plain HTML don't exist** — footer/nav must be copy-pasted to every page; use a static site generator (Eleventy, Astro) when this becomes painful
 
 ---
 
@@ -166,4 +191,4 @@ _Use this section to track what you've learned and any blockers._
 - [x] Step 3 — GitHub push
 - [x] Step 4 — Layout & content
 - [x] Step 5 — GitHub Pages
-- [ ] Step 6 — JavaScript
+- [x] Step 6 — JavaScript interactivity
