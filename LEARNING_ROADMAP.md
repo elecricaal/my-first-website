@@ -85,7 +85,17 @@ git commit -m "my first commit"
 **Concepts to learn:**
 - CSS Flexbox and Grid
 - Semantic HTML (`<nav>`, `<section>`, `<footer>`, `<header>`)
-**Status:** Not started  
+**Status:** Completed  
+**What was built:**
+- `<header>`, `<nav>`, `<main>`, `<footer>` added to both pages — proper semantic structure
+- Navigation bar with logo ("My Website") on the left, page links on the right
+- Active link highlighted in blue using `.active` class
+- Footer with "Made by Carel8i — 2026"
+- `flex: 1` on `<main>` and `.card` (mobile) to fill remaining space between nav and footer
+- `justify-content: flex-start` on mobile card — content starts from top, no vertical centering
+- Responsive padding: `32px` desktop → `24px` tablet → `0` mobile
+- `*, *::before, *::after { box-sizing: border-box }` — global reset to prevent padding overflow
+- `img { max-width: 100% }` — global image rule to prevent overflow
 **Ask Copilot:**
 - *"Add a navigation bar with links to both pages"*
 - *"What is flexbox and show me an example in my CSS"*
@@ -147,6 +157,6 @@ _Use this section to track what you've learned and any blockers._
 - [x] Step 1 — Shared CSS + full CSS foundation
 - [x] Step 2 — Git setup
 - [x] Step 3 — GitHub push
-- [ ] Step 4 — Layout & content
+- [x] Step 4 — Layout & content
 - [ ] Step 5 — GitHub Pages
 - [ ] Step 6 — JavaScript
