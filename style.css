@@ -16,7 +16,7 @@
     --color-primary-focus:  rgba(74, 144, 226, 0.4);
 
     /* Colors — Neutral */
-    --color-background:     hsl(0, 80%, 50%);  /* page background      */
+    --color-background:     #f0f4f8;  /* page background      */
     --color-surface:        #ffffff;  /* cards, panels        */
     --color-border:         #d1d9e0;  /* dividers, outlines   */
 

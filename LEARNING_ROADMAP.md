@@ -42,12 +42,7 @@ git add .
 git commit -m "my first commit"
 ```
 **Concept:** Version control, commit history, snapshots.  
-**Status:** Completed  
-**What was done:**
-- `git init` — initialized a Git repository (`.git` folder created)
-- `git config --global user.name / user.email` — set Git identity (name: Carel8i)
-- `git add .` — staged all 6 project files
-- `git commit -m "first commit: HTML pages and CSS foundation"` — saved first snapshot on branch `main` (commit `0c7f165`)
+**Status:** Not started  
 **Ask Copilot:**
 - *"Set up Git for my project step by step"*
 - *"Explain what git init, git add, and git commit do"*
