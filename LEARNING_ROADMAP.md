@@ -5,9 +5,10 @@ I am a senior UX designer learning web development. I have experience with desig
 
 ## Current Project
 A 2-page HTML website with a solid CSS foundation:
-- `hello.html` — Homepage with a card, h1, and a button that navigates to the second page
+- `hello.html` — Homepage with a card, h1, waving cat GIF, and a button that navigates to the second page
 - `second.html` — Second page with a card, h1, and a back button
 - `style.css` — Shared external stylesheet with a full design system
+- `cat-waving.gif` — Animated cat image used on the homepage card
 
 ## Tech Stack
 - HTML5 (with viewport meta tag for responsive support)
@@ -42,7 +43,18 @@ git add .
 git commit -m "my first commit"
 ```
 **Concept:** Version control, commit history, snapshots.  
-**Status:** Not started  
+**Status:** Completed  
+**What was done:**
+- `git init` — initialized a Git repository (`.git` folder created)
+- `git config --global user.name / user.email` — set Git identity (name: Carel8i)
+- `git add .` — staged all project files
+- `git commit -m "..."` — saves a permanent snapshot with a message
+- `git status` — shows what has changed since the last commit
+- `git log --oneline` — shows full commit history in compact format
+- `git revert HEAD --no-edit` — creates a new commit that undoes the last one (safe rollback)
+- `git checkout <commit-id> -- <file>` — pulls a single file from any past commit to preview it
+- `git checkout HEAD -- <file>` — restores a file back to the latest commit
+- GitLens extension — visual commit history in VS Code (Commit Graph tab)
 **Ask Copilot:**
 - *"Set up Git for my project step by step"*
 - *"Explain what git init, git add, and git commit do"*
@@ -52,7 +64,16 @@ git commit -m "my first commit"
 ### Step 3 — GitHub (Cloud backup + sharing)
 **Goal:** Push the project to GitHub for backup and to share work.  
 **Concept:** Remote repositories, push/pull, collaboration.  
-**Status:** Not started  
+**Status:** Completed  
+**What was done:**
+- Created personal GitHub account (`elecricaal`) at github.com
+- Created private repository `my-first-website`
+- `git remote add origin https://github.com/elecricaal/my-first-website.git` — connected local project to GitHub
+- `git branch -M main` — confirmed branch name matches GitHub default
+- `git push -u origin main` — pushed all commits to GitHub for the first time
+- From now on, just `git push` to sync new commits
+- `git remote -v` — shows the connected remote URL
+- Learned to read commit history and diffs on GitHub (click commit count → click a commit)
 **Ask Copilot:**
 - *"How do I push my project to GitHub for the first time?"*
 - *"Explain the difference between Git and GitHub"*
@@ -97,6 +118,12 @@ git commit -m "my first commit"
 - **`align-items` on the parent constrains children** — `body { align-items: center }` prevents a child from stretching to full width even with `width: 100%`; override it at the breakpoint
 - **Media query breakpoints must match actual device widths** — iPad Air is 820px, so a `max-width: 768px` breakpoint won't apply to it; use 1024px to cover all tablets
 - **Never go below 16px for body text** — it's the browser default and the accessibility floor
+- **`box-sizing: border-box` should always be set globally** — apply `*, *::before, *::after { box-sizing: border-box }` so padding is counted inside an element's width, not added on top
+- **Horizontal scroll needs `overflow-x: hidden` on both `html` and `body`** — the browser scrolls the `html` element, so setting it only on `body` doesn't always work
+- **`img { max-width: 100% }` prevents images breaking layouts** — always set this globally so images never overflow their container
+- **`git revert` is safer than `git reset`** — revert adds a new commit that undoes changes; reset rewrites history and can cause problems when working with GitHub
+- **Live Server + Auto Save = instant feedback loop** — enable Auto Save (`afterDelay: 500ms`) in VS Code so the browser updates automatically as you type
+- **Test on a real device via local IP** — with Live Server running, open `<your-mac-ip>:5500/hello.html` on your phone (same Wi-Fi required)
 
 ---
 
@@ -118,8 +145,8 @@ git commit -m "my first commit"
 _Use this section to track what you've learned and any blockers._
 
 - [x] Step 1 — Shared CSS + full CSS foundation
-- [ ] Step 2 — Git setup
-- [ ] Step 3 — GitHub push
+- [x] Step 2 — Git setup
+- [x] Step 3 — GitHub push
 - [ ] Step 4 — Layout & content
 - [ ] Step 5 — GitHub Pages
 - [ ] Step 6 — JavaScript
