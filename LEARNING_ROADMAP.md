@@ -122,6 +122,7 @@ git commit -m "my first commit"
 **Goal:** Add real interactivity — animations, form validation, dynamic content.  
 **Concept:** DOM manipulation, event listeners, functions.  
 **Status:** Not started  
+**Suggested starting point:** Add a fade-in animation when the page loads — visual, simple, and teaches core JS concepts (DOM, event listeners, functions) without being overwhelming.  
 **Ask Copilot:**
 - *"Explain what the JavaScript on my button does"*
 - *"Add a smooth fade-in animation when the page loads"*
