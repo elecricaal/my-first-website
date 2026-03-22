@@ -18,12 +18,64 @@
     </header>
     <main>
         <div class="card">
-            <h1>Welcome to the Second Page</h1>
-            <button class="btn" onclick="window.location.href='hello.html'">Go Back</button>
+            <h1>What's your mood like today?</h1>
+            <div class="mood-selector">
+                <button class="mood-btn" data-mood="sad">
+                    <span class="mood-emoji">😿</span>
+                    <span>Sad</span>
+                </button>
+                <button class="mood-btn" data-mood="neutral">
+                    <span class="mood-emoji">😼</span>
+                    <span>Neutral</span>
+                </button>
+                <button class="mood-btn" data-mood="happy">
+                    <span class="mood-emoji">😸</span>
+                    <span>Happy</span>
+                </button>
+            </div>
+            <p class="mood-message" id="mood-message"></p>
+            <a href="hello.html" class="back-link" id="back-btn">← Go Back</a>
         </div>
     </main>
     <footer>
         <p>Made by Carel8i &mdash; 2026</p>
     </footer>
+    <script>
+        // Wait for the page content to fully load, then fade in the main section
+        document.addEventListener('DOMContentLoaded', function () {
+            var main = document.querySelector('main');
+            main.classList.add('visible');
+
+            // Mood selector
+            var moodBtns = document.querySelectorAll('.mood-btn');
+            var moodMessage = document.querySelector('#mood-message');
+
+            var messages = {
+                sad:     "That's okay. Every feeling is valid. 💙",
+                neutral: "A calm day — that's perfectly fine. 🌤️",
+                happy:   "Love to hear it! Keep that energy going. 🌟"
+            };
+
+            moodBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    // Remove selected state from all buttons
+                    moodBtns.forEach(function (b) {
+                        b.classList.remove('selected');
+                    });
+                    // Highlight the clicked one
+                    btn.classList.add('selected');
+                    // Show the matching message
+                    var mood = btn.getAttribute('data-mood');
+                    moodMessage.textContent = messages[mood];
+                });
+            });
+
+            // Back button
+            var backBtn = document.querySelector('#back-btn');
+            backBtn.addEventListener('click', function () {
+                window.location.href = 'hello.html';
+            });
+        });
+    </script>
 </body>
 </html>

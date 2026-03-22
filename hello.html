@@ -20,11 +20,26 @@
         <div class="card">
             <h1>Hello World</h1>
             <img src="cat-waving.gif" alt="A cat waving hello" class="cat-img">
-            <button class="btn" onclick="window.location.href='second.html'">Click Here</button>
+            <button class="btn" id="go-btn">Click Here</button>
         </div>
     </main>
     <footer>
         <p>Made by Carel8i &mdash; 2026</p>
     </footer>
+    <script>
+        // Wait for the page content to fully load, then fade in the main section
+        document.addEventListener('DOMContentLoaded', function () {
+            var main = document.querySelector('main');
+            main.classList.add('visible');
+
+            var btn = document.querySelector('#go-btn');
+            btn.addEventListener('click', function () {
+                btn.textContent = 'On my way!';
+                setTimeout(function () {
+                    window.location.href = 'second.html';
+                }, 600);
+            });
+        });
+    </script>
 </body>
 </html>
