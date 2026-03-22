@@ -34,6 +34,28 @@
                 </button>
             </div>
             <p class="mood-message" id="mood-message"></p>
+
+            <form class="contact-form" id="contact-form" novalidate>
+                <h2 class="form-title">Let's chat</h2>
+                <div class="form-group">
+                    <label class="form-label" for="name">What's your name?</label>
+                    <input class="form-input" type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
+                    <span class="form-error" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">What's your email</label>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
+                    <span class="form-error" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Share a little more about how you feel</label>
+                    <textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell me anything…" rows="4"></textarea>
+                    <span class="form-error" id="message-error"></span>
+                </div>
+                <button type="submit" class="btn">Contact me</button>
+                <p class="form-success" id="form-success"></p>
+            </form>
+
             <a href="hello.html" class="back-link" id="back-btn">← Go Back</a>
         </div>
     </main>
@@ -56,6 +78,8 @@
                 happy:   "Love to hear it! Keep that energy going. 🌟"
             };
 
+            var contactForm = document.querySelector('#contact-form');
+
             moodBtns.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     // Remove selected state from all buttons
@@ -67,7 +91,73 @@
                     // Show the matching message
                     var mood = btn.getAttribute('data-mood');
                     moodMessage.textContent = messages[mood];
+                    // Reveal the form
+                    contactForm.classList.add('visible');
                 });
+            });
+
+            // Form validation
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var nameInput   = document.querySelector('#name');
+                var emailInput  = document.querySelector('#email');
+                var msgInput    = document.querySelector('#message');
+                var nameError   = document.querySelector('#name-error');
+                var emailError  = document.querySelector('#email-error');
+                var msgError    = document.querySelector('#message-error');
+                var formSuccess = document.querySelector('#form-success');
+
+                // Clear previous messages
+                nameError.textContent  = '';
+                emailError.textContent = '';
+                msgError.textContent   = '';
+                formSuccess.textContent = '';
+
+                var valid = true;
+
+                // Validate name
+                if (nameInput.value.trim() === '') {
+                    nameError.textContent = 'Please enter your name.';
+                    valid = false;
+                }
+
+                // Validate email — must contain @ and a dot after it
+                var email = emailInput.value.trim();
+                if (email === '' || !email.includes('@') || email.indexOf('.', email.indexOf('@')) === -1) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                    valid = false;
+                }
+
+                // Validate message
+                if (msgInput.value.trim() === '') {
+                    msgError.textContent = 'Tell me more. I\'d love to hear it!';
+                    valid = false;
+                }
+
+                if (valid) {
+                    // Send data to Formspree
+                    fetch('https://formspree.io/f/myknqwqj', {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json' },
+                        body: new FormData(contactForm)
+                    })
+                    .then(function (response) {
+                        if (response.ok) {
+                            formSuccess.textContent = 'Thanks! We\'ll be in touch. 🐱';
+                            nameInput.value  = '';
+                            emailInput.value = '';
+                            msgInput.value   = '';
+                        } else {
+                            formSuccess.style.color = 'var(--color-error)';
+                            formSuccess.textContent = 'Something went wrong. Please try again.';
+                        }
+                    })
+                    .catch(function () {
+                        formSuccess.style.color = 'var(--color-error)';
+                        formSuccess.textContent = 'No connection. Please try again later.';
+                    });
+                }
             });
 
             // Back button
