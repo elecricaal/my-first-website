@@ -1,0 +1,239 @@
+/* ===========================
+   Google Fonts
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ===========================
+   Design Tokens (CSS Variables)
+   =========================== */
+
+:root {
+    /* Colors — Primary (Blue) */
+    --color-primary:        #4a90e2;
+    --color-primary-dark:   #357abd;
+    --color-primary-darker: #1a5a9c;
+    --color-primary-focus:  rgba(74, 144, 226, 0.4);
+
+    /* Colors — Neutral */
+    --color-background:     #f0f4f8;  /* page background      */
+    --color-surface:        #ffffff;  /* cards, panels        */
+    --color-border:         #d1d9e0;  /* dividers, outlines   */
+
+    /* Colors — Text */
+    --color-text:           #1a1a2e;  /* primary text         */
+    --color-text-secondary: #6b7280;  /* subtitles, captions  */
+    --color-text-inverse:   #ffffff;  /* text on dark bg      */
+
+    /* Colors — Feedback */
+    --color-success:        #22c55e;  /* confirmations        */
+    --color-warning:        #f59e0b;  /* alerts               */
+    --color-error:          #ef4444;  /* errors, destructive  */
+
+    /* Typography — Family */
+    --font-family: 'Inter', sans-serif;
+
+    /* Typography — Scale */
+    --font-size-xs:  12px;   /* labels, captions      */
+    --font-size-sm:  14px;   /* secondary text        */
+    --font-size-md:  16px;   /* body / buttons        */
+    --font-size-lg:  20px;   /* large body / subtitles */
+    --font-size-xl:  24px;   /* h3                    */
+    --font-size-2xl: 32px;   /* h2                    */
+    --font-size-3xl: 48px;   /* h1                    */
+
+    /* Typography — Weight */
+    --font-weight-regular: 400;
+    --font-weight-medium:  500;
+    --font-weight-semibold: 600;
+    --font-weight-bold:    700;
+
+    /* Typography — Line Height */
+    --line-height-tight:  1.2;
+    --line-height-normal: 1.5;
+    --line-height-loose:  1.75;
+
+    /* Spacing */
+    --space-xs:  4px;   /* tight gaps, icon padding     */
+    --space-sm:  8px;   /* small gaps between elements  */
+    --space-md:  16px;  /* default padding              */
+    --space-lg:  24px;  /* card padding, section gaps   */
+    --space-xl:  32px;  /* between sections             */
+    --space-2xl: 48px;  /* large layout spacing         */
+
+    /* Border */
+    --border-radius: 6px;
+
+    /* Transitions */
+    --transition-speed: 0.2s;
+}
+
+/* ===========================
+   Global Styles
+   =========================== */
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+}
+
+p {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-normal);
+}
+
+/* ===========================
+   Card
+   =========================== */
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: calc(var(--border-radius) * 2);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    min-width: 320px;
+}
+
+/* ===========================
+   Shared Button
+   =========================== */
+
+.btn {
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-md);
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    outline: none;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.btn:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+.btn:active {
+    background-color: var(--color-primary-darker);
+    border-color: var(--color-primary-darker);
+    transform: scale(0.98);
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 4px var(--color-primary-focus);
+    border-color: var(--color-primary-dark);
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+
+/* Tablet — 1024px and below
+   Typography: scale down ~20% from desktop.
+   48px h1 → 36px keeps hierarchy without feeling oversized on a tablet screen. */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: var(--font-size-2xl); /* 32px — unchanged, still comfortable */
+    }
+
+    h3 {
+        font-size: var(--font-size-lg); /* 20px */
+    }
+
+    p {
+        font-size: var(--font-size-md); /* 16px — body text stays the same */
+    }
+
+    .card {
+        min-width: unset;
+        width: 80%;
+        padding: var(--space-xl);
+        border-radius: calc(var(--border-radius) * 2);
+    }
+}
+
+/* Mobile — 480px and below
+   Typography: minimum readable sizes. Never go below 16px for body text — 
+   browsers default to 16px and going smaller forces users to pinch-zoom.
+   h1 at 28px keeps it prominent without crowding the screen. */
+@media (max-width: 480px) {
+    body {
+        align-items: stretch;
+        justify-content: flex-start;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: var(--font-size-xl); /* 24px */
+    }
+
+    h3 {
+        font-size: var(--font-size-lg); /* 20px */
+    }
+
+    p {
+        font-size: var(--font-size-md); /* 16px — never go smaller than this */
+    }
+
+    .card {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        border: none;
+        padding: var(--space-xl) var(--space-lg);
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
