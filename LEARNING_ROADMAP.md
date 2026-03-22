@@ -106,7 +106,13 @@ git commit -m "my first commit"
 ### Step 5 — Publish live with GitHub Pages
 **Goal:** Put the website on the internet for free.  
 **Concept:** Static site hosting, GitHub Pages, deployment.  
-**Status:** Not started  
+**Status:** Completed  
+**What was done:**
+- Changed Git email to `carrasce@tcd.ie` — rewrote all commit history with `git filter-branch`, force pushed to GitHub
+- Made repository public (required for free GitHub Pages)
+- Enabled GitHub Pages: Settings → Pages → Branch: `main` / `/ (root)` → Save
+- Site is live at: `https://elecricaal.github.io/my-first-website/hello.html`
+- From now on, every `git push` automatically redeploys the live site
 **Ask Copilot:**
 - *"How do I publish my site with GitHub Pages?"*
 - *"What files do I need to have ready before deploying to GitHub Pages?"*
@@ -158,5 +164,5 @@ _Use this section to track what you've learned and any blockers._
 - [x] Step 2 — Git setup
 - [x] Step 3 — GitHub push
 - [x] Step 4 — Layout & content
-- [ ] Step 5 — GitHub Pages
+- [x] Step 5 — GitHub Pages
 - [ ] Step 6 — JavaScript
