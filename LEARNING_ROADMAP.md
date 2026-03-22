@@ -52,14 +52,7 @@ git commit -m "my first commit"
 ### Step 3 — GitHub (Cloud backup + sharing)
 **Goal:** Push the project to GitHub for backup and to share work.  
 **Concept:** Remote repositories, push/pull, collaboration.  
-**Status:** Completed  
-**What was done:**
-- Created personal GitHub account (`elecricaal`)
-- Created private repository `my-first-website` at `github.com/elecricaal/my-first-website`
-- `git remote add origin https://github.com/elecricaal/my-first-website.git` — connected local project to GitHub
-- `git branch -M main` — confirmed branch name matches GitHub default
-- `git push -u origin main` — pushed all 3 commits to GitHub
-- From now on, just `git push` to sync new commits
+**Status:** Not started  
 **Ask Copilot:**
 - *"How do I push my project to GitHub for the first time?"*
 - *"Explain the difference between Git and GitHub"*
